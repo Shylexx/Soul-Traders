@@ -52,7 +52,7 @@ $RECYCLE.BIN/
 .vscode/
 
 #
-.vsconfig/
+.vsconfig
 
 # Gradle cache directory
 .gradle/
