@@ -51,6 +51,9 @@ $RECYCLE.BIN/
 # VS Code Cache Directory
 .vscode/
 
+#
+.vsconfig
+
 # Gradle cache directory
 .gradle/
 
@@ -85,6 +88,8 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+
+
 
 # Crashlytics generated file
 crashlytics-build.properties
