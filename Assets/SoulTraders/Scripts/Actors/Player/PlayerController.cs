@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoulTraders.Core;
+using SoulTraders.Controller;
 using UnityEngine;
 
 namespace SoulTraders.Gameplay.Player
@@ -13,6 +15,9 @@ namespace SoulTraders.Gameplay.Player
         public AudioSource audioSource;
         public Collider2D playerCollider;
         public Animator animator;
+
+        // Model Reference
+        readonly STControl model = STEvents.GetModel<STControl>();
 
         public bool controlEnabled = true;
 
@@ -45,6 +50,10 @@ namespace SoulTraders.Gameplay.Player
             else
             {
                 move.x = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                STEvents.Schedule<PlayerDeathEvent>();
             }
             base.Update();
         }
