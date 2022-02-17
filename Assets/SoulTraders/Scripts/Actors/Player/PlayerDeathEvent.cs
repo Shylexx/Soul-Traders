@@ -13,7 +13,7 @@ namespace SoulTraders.Gameplay.Player
         public override void Execute()
         {
             var playerController = model.playerController;
-            playerController.enabled = false;
+            playerController.controlEnabled = false;
 
         }
     }

@@ -17,7 +17,7 @@ namespace SoulTraders.Controller
             mainCam = GetComponent<Camera>();
         }
 
-        void Update()
+        void LateUpdate()
         {
             transform.position = new Vector3(model.playerController.transform.position.x, model.playerController.transform.position.y, -10);
         }

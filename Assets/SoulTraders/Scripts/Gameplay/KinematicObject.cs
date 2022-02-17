@@ -8,6 +8,11 @@ namespace SoulTraders.Gameplay
     // This script creates a class that handles all the necessary logic for a Rigidbody2D Physics Object.
     // All "Characters" will extend from this as it handles movement around the world
 
+    // How does this process movement?
+    // On Update (Per FPS Frame) it processes input, Setting the Target Velocity. 
+    // This is called target only because the velocity is not instantly changed
+    // In Fixed Update, the Body's velocity is updated to the target velocity on physics frame
+
     public class KinematicObject : MonoBehaviour
     {
 
@@ -15,8 +20,6 @@ namespace SoulTraders.Gameplay
         /// The velocity of the entity
         /// </summary>
         public Vector2 velocity;
-
-
 
         protected Vector2 targetVelocity;
         protected Rigidbody2D body;
@@ -50,18 +53,16 @@ namespace SoulTraders.Gameplay
         protected virtual void OnEnable()
         {
             body = GetComponent<Rigidbody2D>();
-            body.isKinematic = true;
         }
 
         protected virtual void OnDisable()
         {
-            body.isKinematic = false;
+
         }
 
 
         protected virtual void Update()
         {
-            targetVelocity = Vector2.zero;
             CalcVelocity();
         }
 
@@ -81,10 +82,11 @@ namespace SoulTraders.Gameplay
             MoveEntity(velocity);
         }
 
+
         void MoveEntity(Vector2 velocity)
         {
 
-            body.position = body.position + velocity;
+            body.velocity = velocity;
 
         }
     }

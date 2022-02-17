@@ -16,6 +16,8 @@ namespace SoulTraders.Gameplay.Player
         public Collider2D playerCollider;
         public Animator animator;
 
+        public Rigidbody2D playerBody;
+
         // Model Reference
         readonly STControl model = STEvents.GetModel<STControl>();
 
@@ -36,6 +38,7 @@ namespace SoulTraders.Gameplay.Player
             audioSource = GetComponent<AudioSource>();
             playerCollider = GetComponent<Collider2D>();
             animator = GetComponent<Animator>();
+            playerBody = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
@@ -44,12 +47,13 @@ namespace SoulTraders.Gameplay.Player
             // Get Player Movement input
             if (controlEnabled)
             {
-                move.x = Input.GetAxis("Horizontal");
-                move.y = Input.GetAxis("Vertical");
+                move.x = Input.GetAxisRaw("Horizontal");
+                move.y = Input.GetAxisRaw("Vertical");
             }
             else
             {
                 move.x = 0;
+                move.y = 0;
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -59,11 +63,11 @@ namespace SoulTraders.Gameplay.Player
         }
 
         /// <summary>
-        /// Calculate Velocity of the Player based on input
+        /// Set Target Velocity to
         /// </summary>
         protected override void CalcVelocity()
         {
-            targetVelocity = move * maxSpeed;
+            targetVelocity = move.normalized * maxSpeed;
         }
     }
 
