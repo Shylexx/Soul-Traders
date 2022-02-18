@@ -44,6 +44,7 @@ namespace SoulTraders.Gameplay.Player
         // Update is called once per frame
         protected override void Update()
         {
+            
             // Get Player Movement input
             if (controlEnabled)
             {
