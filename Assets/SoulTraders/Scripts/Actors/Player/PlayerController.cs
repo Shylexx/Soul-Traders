@@ -60,15 +60,25 @@ namespace SoulTraders.Gameplay.Player
             {
                 STEvents.Schedule<PlayerDeathEvent>();
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                StartCoroutine(Knockback(1, 10, new Vector2(0, 0)));
+            }
             base.Update();
+        }
+
+        protected override void FixedUpdate()
+        {
+            body.velocity = CalcVelocity();
+            base.FixedUpdate();
         }
 
         /// <summary>
         /// Set Target Velocity to
         /// </summary>
-        protected override void CalcVelocity()
+        protected Vector2 CalcVelocity()
         {
-            targetVelocity = move.normalized * maxSpeed;
+            return (move.normalized * maxSpeed);
         }
     }
 
