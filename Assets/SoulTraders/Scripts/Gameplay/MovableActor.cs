@@ -10,7 +10,7 @@ namespace SoulTraders.Gameplay
     // (As children of this class)
 
 
-    public class KinematicObject : MonoBehaviour
+    public class MovableActor : MonoBehaviour
     {
         protected Rigidbody2D body;
 

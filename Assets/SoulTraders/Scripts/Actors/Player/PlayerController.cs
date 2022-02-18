@@ -7,7 +7,7 @@ using UnityEngine;
 namespace SoulTraders.Gameplay.Player
 {
 
-    public class PlayerController : KinematicObject
+    public class PlayerController : MovableActor
     {
 
         // Component References
@@ -63,6 +63,10 @@ namespace SoulTraders.Gameplay.Player
             {
                 StartCoroutine(Knockback(1, 10, new Vector2(0, 0)));
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Interact();
+            }
             base.Update();
         }
 
@@ -79,6 +83,63 @@ namespace SoulTraders.Gameplay.Player
         {
             return (move.normalized * maxSpeed);
         }
+
+        void Interact()
+        {
+            Interactable interactable = GetClosestInteractable(GetNearInteractableColliders());
+            if (interactable != null)
+            {
+                interactable.OnInteract();
+                interactable = null;
+            }
+        }
+
+        List<Collider2D> GetNearInteractableColliders()
+        {
+            List<Collider2D> nearInteractables = new List<Collider2D>();
+            ContactFilter2D noFilter = new ContactFilter2D();
+            noFilter.NoFilter();
+            int countNearInteractables = Physics2D.OverlapCircle((Vector2)transform.position, 1, noFilter, nearInteractables);
+            nearInteractables.RemoveAll(item => IsInteractable(item));
+            return (nearInteractables);
+        }
+
+        Interactable GetClosestInteractable(List<Collider2D> colliders)
+        {
+            Collider2D bestTarget = null;
+            float closestDistanceSqr = Mathf.Infinity;
+            Vector2 currentPosition = transform.position;
+            foreach (Collider2D potentialTarget in colliders)
+            {
+                Vector2 dirToTarget = (Vector2)potentialTarget.transform.position - currentPosition;
+                float dSqrToTarget = dirToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget;
+                }
+            }
+            if (bestTarget != null)
+            {
+                Interactable closestInteractable = bestTarget.GetComponent<Interactable>();
+                if (closestInteractable != null)
+                {
+                    return closestInteractable;
+                }
+                else return null;
+            }
+            else return null;
+        }
+
+        bool IsInteractable(Collider2D collider)
+        {
+            if (collider.GetComponent<Interactable>() != null)
+            {
+                return (false);
+            }
+            else return true;
+        }
+
     }
 
 }
