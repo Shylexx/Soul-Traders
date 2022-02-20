@@ -1,20 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using SoulTraders.Gameplay.Player;
+using SoulTraders.Controller;
+using SoulTraders.Core;
 
 namespace SoulTraders.Gear.Runes
 {
 
-    public interface IRune
+    public interface IRuneEffect
     {
-        string EffectName { get; }
-        string EffectDesc { get; }
-        void Effect();
+        public string EffectName { get; }
+        public string EffectDesc { get; }
+        public void Effect();
+    }
+
+    [Serializable]
+    public class RuneEffectProps
+    {
+        public int damage;
+        public Vector2 position;
+        public int size;
+        public string message;
+    }
+
+    public class Rune : MonoBehaviour
+    {
+
+        public RuneData runeData;
+
+        void UseEffects()
+        {
+            foreach (var effect in runeData.effects)
+            {
+                effect.Effect();
+            }
+        }
+
+        void Awake()
+        {
+            UseEffects();
+        }
+
+
+    }
+
+    // Rune Effects Go Below
+
+    [Serializable]
+    public class TestRuneEffect : IRuneEffect
+    {
+        [SerializeField]
+        public RuneEffectProps props;
+        public string EffectName
+        {
+            get
+            {
+                return "Test Rune Name";
+            }
+        }
+
+        public string EffectDesc
+        {
+            get
+            {
+                return "Test Rune Desc";
+            }
+        }
+        public void Effect()
+        {
+            Debug.Log("Default Message");
+        }
+    }
+
+    [Serializable]
+    public class SayRuneEffect : IRuneEffect
+    {
+        [SerializeField]
+        public RuneEffectProps props;
+
+        public string EffectName
+        {
+            get
+            {
+                return "Say Name Effect";
+            }
+        }
+        public string EffectDesc
+        {
+            get
+            {
+                return "Say Name Desc";
+            }
+        }
+
+        public void Effect()
+        {
+            Debug.Log(props.message);
+        }
     }
 
 
-    // public class Rune : InventoryItem, IInventoryItem, IRune
-    // {
-
-    // }
 }

@@ -10,9 +10,33 @@ namespace SoulTraders.Gear.Runes
     {
         public string _itemName;
         public string _itemDesc;
-        public ItemType _itemType;
+        public ItemType _itemType = ItemType.RUNE;
 
-        public RuneEffectData _runeEffect;
+        public string ItemName
+        {
+            get
+            {
+                return _itemName;
+            }
+        }
+
+        public string ItemDesc
+        {
+            get
+            {
+                return _itemDesc;
+            }
+        }
+
+        public ItemType ItemType
+        {
+            get
+            {
+                return _itemType;
+            }
+        }
+
+        [SerializeReference, SubclassSelector] public IRuneEffect[] effects;
     }
 }
 

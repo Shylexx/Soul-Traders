@@ -8,7 +8,7 @@ namespace SoulTraders.Gear
     public class PlayerInventory
     {
         private List<IInventoryItem> items;
-        public InventoryItem testItem = new InventoryItem();
+        public InventoryItem testItem;
 
         public PlayerInventory()
         {
