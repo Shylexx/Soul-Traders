@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badbe48448bb4b242ab430b962496962, type: 3}
   m_Name: FireRune
   m_EditorClassIdentifier: 
-  _itemName: 
-  _itemDesc: 
+  _itemName: Fire Rune
+  _itemDesc: Rune with fire effect
   _itemType: 2
-  effects: []
+  effects:
+  - id: 0
   references:
     version: 1
+    00000000:
+      type: {class: , ns: , asm: }

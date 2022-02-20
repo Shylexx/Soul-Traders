@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badbe48448bb4b242ab430b962496962, type: 3}
   m_Name: TestRune
   m_EditorClassIdentifier: 
-  _itemName: 
-  _itemDesc: 
-  _itemType: 0
-  properties: []
+  _itemName: Test Rune
+  _itemDesc: Test Rune Desc
+  _itemType: 2
+  effects:
+  - id: 0
+  - id: 1
   references:
     version: 1
+    00000000:
+      type: {class: SayRuneEffect, ns: SoulTraders.Gear.Runes, asm: Assembly-CSharp}
+      data:
+        props:
+          damage: 0
+          position: {x: 0, y: 0}
+          size: 0
+          message: Custom Message
+    00000001:
+      type: {class: TestRuneEffect, ns: SoulTraders.Gear.Runes, asm: Assembly-CSharp}
+      data:
+        props:
+          damage: 0
+          position: {x: 0, y: 0}
+          size: 0
+          message: 

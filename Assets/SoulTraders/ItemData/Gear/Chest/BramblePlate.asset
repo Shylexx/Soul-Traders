@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c304476cc861c246b3eaf9d114905fc, type: 3}
   m_Name: BramblePlate
   m_EditorClassIdentifier: 
-  _itemName: 
-  _itemDesc: 
+  _itemName: Bramble Plate
+  _itemDesc: Chestplate with brambles
   _itemType: 0
-  _slot: 0
-  _id: 0
+  _slot: 1
+  _id: 1
