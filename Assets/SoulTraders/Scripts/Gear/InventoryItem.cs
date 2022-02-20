@@ -9,11 +9,18 @@ namespace SoulTraders.Gear
         GEAR, CONSUMABLE, RUNE, MISC, NOTYPE
     }
 
-    public abstract class InventoryItem : MonoBehaviour
+    public interface IInventoryItem
     {
-        public abstract string ItemName { get; }
-        public abstract string ItemDesc { get; }
-        public abstract ItemType ItemType { get; }
+        public string ItemName { get; }
+        public string ItemDesc { get; }
+        public ItemType ItemType { get; }
 
     }
+
+    public class InventoryItem : MonoBehaviour
+    {
+        public InventoryItemData itemData;
+    }
+
+
 }

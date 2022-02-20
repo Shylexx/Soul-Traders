@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SoulTraders.Gear.GearItems
+namespace SoulTraders.Gear
 {
-    [CreateAssetMenu(fileName = "Gear Item", menuName = "ScriptableObjects/Inventory Items/Gear Item", order = 1)]
-    public class GearItemData : ScriptableObject, IInventoryItem, IGearItem
+    [CreateAssetMenu(fileName = "Inventory Item", menuName = "ScriptableObjects/Inventory Items/Inventory Item", order = 1)]
+    public class InventoryItemData : ScriptableObject, IInventoryItem
     {
         public string _itemName;
         public string _itemDesc;
         public ItemType _itemType;
-        public GearSlot _slot;
-        public int _id;
 
         public string ItemName
         {
@@ -33,23 +31,7 @@ namespace SoulTraders.Gear.GearItems
         {
             get
             {
-                return ItemType.MISC;
-            }
-        }
-
-        public GearSlot Slot
-        {
-            get
-            {
-                return _slot;
-            }
-        }
-
-        public int ID
-        {
-            get
-            {
-                return _id;
+                return _itemType;
             }
         }
     }
