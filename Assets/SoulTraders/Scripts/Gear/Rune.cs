@@ -23,10 +23,42 @@ namespace SoulTraders.Gear.Runes
         public string message;
     }
 
-    public class Rune : MonoBehaviour
+    public class Rune : MonoBehaviour, IInventoryItem
     {
 
         public RuneData runeData;
+
+        public string ItemName
+        {
+            get
+            {
+                return runeData._itemName;
+            }
+        }
+
+        public string ItemDesc
+        {
+            get
+            {
+                return runeData._itemDesc;
+            }
+        }
+
+        public ItemType ItemType
+        {
+            get
+            {
+                return ItemType.RUNE;
+            }
+        }
+
+        public ItemQuality ItemQuality
+        {
+            get
+            {
+                return runeData._quality;
+            }
+        }
 
         void UseEffects()
         {

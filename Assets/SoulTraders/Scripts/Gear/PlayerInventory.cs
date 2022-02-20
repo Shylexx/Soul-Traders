@@ -5,10 +5,11 @@ using SoulTraders.Gear.GearItems;
 
 namespace SoulTraders.Gear
 {
+    [SerializeField]
     public class PlayerInventory
     {
+        [SerializeReference]
         private List<IInventoryItem> items;
-        public InventoryItem testItem;
 
         public PlayerInventory()
         {
@@ -19,6 +20,11 @@ namespace SoulTraders.Gear
         public void AddItem(IInventoryItem item)
         {
             items.Add(item);
+        }
+
+        public void PrintInventory()
+        {
+            Debug.Log(items[0].ItemName);
         }
 
 

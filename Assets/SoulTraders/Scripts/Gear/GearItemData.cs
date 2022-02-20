@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoulTraders.Gear.Runes;
 
 namespace SoulTraders.Gear.GearItems
 {
@@ -12,6 +13,12 @@ namespace SoulTraders.Gear.GearItems
         public ItemType _itemType;
         public GearSlot _slot;
         public int _id;
+        public int _weight;
+        public ItemQuality _quality;
+        public int _runeSlots;
+
+        public List<RuneData> _runes;
+
 
         public string ItemName
         {
@@ -45,11 +52,27 @@ namespace SoulTraders.Gear.GearItems
             }
         }
 
+        public int RuneSlots
+        {
+            get
+            {
+                return _runeSlots;
+            }
+        }
+
         public int ID
         {
             get
             {
                 return _id;
+            }
+        }
+
+        public ItemQuality ItemQuality
+        {
+            get
+            {
+                return _quality;
             }
         }
     }

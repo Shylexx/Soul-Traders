@@ -12,6 +12,9 @@ namespace SoulTraders.Gear.Runes
         public string _itemDesc;
         public ItemType _itemType = ItemType.RUNE;
 
+        public int _weight;
+        public ItemQuality _quality;
+
         public string ItemName
         {
             get
@@ -33,6 +36,14 @@ namespace SoulTraders.Gear.Runes
             get
             {
                 return _itemType;
+            }
+        }
+
+        public ItemQuality ItemQuality
+        {
+            get
+            {
+                return _quality;
             }
         }
 

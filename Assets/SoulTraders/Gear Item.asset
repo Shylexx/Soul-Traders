@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c304476cc861c246b3eaf9d114905fc, type: 3}
-  m_Name: BramblePlate
+  m_Name: Gear Item
   m_EditorClassIdentifier: 
-  _itemName: Bramble Plate
-  _itemDesc: Chestplate with brambles
+  _itemName: 
+  _itemDesc: 
   _itemType: 0
-  _slot: 1
-  _id: 1
+  _slot: 0
+  _id: 0
+  _weight: 0
+  _quality: 0
+  _runeSlots: 0
+  _runes:
+  - {fileID: 0}

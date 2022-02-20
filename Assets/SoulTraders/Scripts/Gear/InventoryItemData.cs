@@ -10,6 +10,8 @@ namespace SoulTraders.Gear
         public string _itemName;
         public string _itemDesc;
         public ItemType _itemType;
+        public int _weight;
+        public ItemQuality _quality;
 
         public string ItemName
         {
@@ -32,6 +34,14 @@ namespace SoulTraders.Gear
             get
             {
                 return _itemType;
+            }
+        }
+
+        public ItemQuality ItemQuality
+        {
+            get
+            {
+                return _quality;
             }
         }
     }

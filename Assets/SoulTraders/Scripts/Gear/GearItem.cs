@@ -28,6 +28,8 @@ namespace SoulTraders.Gear.GearItems
     {
         public GearItemData gearItem;
 
+
+
     }
 
 
