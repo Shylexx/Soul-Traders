@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SoulTraders.Gameplay.Interact
 {
-    public class ChestInteraction : Interactable
+    public class ChestInteraction : MonoBehaviour, IInteractable
     {
 
         public Sprite closedSprite;
@@ -31,11 +31,10 @@ namespace SoulTraders.Gameplay.Interact
         //     }
         // }
 
-        public override void OnInteract()
+        public void OnInteract()
         {
             spriteRenderer.sprite = openSprite;
             chestOpen = true;
-            base.OnInteract();
         }
     }
 }

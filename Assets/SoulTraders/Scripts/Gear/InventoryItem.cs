@@ -6,17 +6,14 @@ namespace SoulTraders.Gear
 {
     public enum ItemType
     {
-        GEAR, CONSUMABLE, RUNE, MISC
+        GEAR, CONSUMABLE, RUNE, MISC, NOTYPE
     }
-    public interface IInventoryItem
+
+    public abstract class InventoryItem : MonoBehaviour
     {
-        string GetName();
+        public abstract string ItemName { get; }
+        public abstract string ItemDesc { get; }
+        public abstract ItemType ItemType { get; }
 
-        string GetDesc();
-
-        ItemType type
-        {
-            get;
-        }
     }
 }

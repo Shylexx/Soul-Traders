@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SoulTraders.Core;
 using SoulTraders.Controller;
+using SoulTraders.Gear;
 using UnityEngine;
 
 namespace SoulTraders.Gameplay.Player
@@ -17,6 +18,8 @@ namespace SoulTraders.Gameplay.Player
         public Animator animator;
 
         public Rigidbody2D playerBody;
+
+        public PlayerInventory inventory;
 
         // Model Reference
         readonly STControl model = STEvents.GetModel<STControl>();
@@ -39,6 +42,7 @@ namespace SoulTraders.Gameplay.Player
             playerCollider = GetComponent<Collider2D>();
             animator = GetComponent<Animator>();
             playerBody = GetComponent<Rigidbody2D>();
+            inventory = new PlayerInventory();
         }
 
         // Update is called once per frame
@@ -86,7 +90,7 @@ namespace SoulTraders.Gameplay.Player
 
         void Interact()
         {
-            Interactable interactable = GetClosestInteractable(GetNearInteractableColliders());
+            IInteractable interactable = GetClosestInteractable(GetNearInteractableColliders());
             if (interactable != null)
             {
                 interactable.OnInteract();
@@ -104,7 +108,7 @@ namespace SoulTraders.Gameplay.Player
             return (nearInteractables);
         }
 
-        Interactable GetClosestInteractable(List<Collider2D> colliders)
+        IInteractable GetClosestInteractable(List<Collider2D> colliders)
         {
             Collider2D bestTarget = null;
             float closestDistanceSqr = Mathf.Infinity;
@@ -121,7 +125,7 @@ namespace SoulTraders.Gameplay.Player
             }
             if (bestTarget != null)
             {
-                Interactable closestInteractable = bestTarget.GetComponent<Interactable>();
+                IInteractable closestInteractable = bestTarget.GetComponent<IInteractable>();
                 if (closestInteractable != null)
                 {
                     return closestInteractable;
@@ -133,7 +137,7 @@ namespace SoulTraders.Gameplay.Player
 
         bool IsInteractable(Collider2D collider)
         {
-            if (collider.GetComponent<Interactable>() != null)
+            if (collider.GetComponent<IInteractable>() != null)
             {
                 return (false);
             }

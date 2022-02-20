@@ -4,20 +4,26 @@ using UnityEngine;
 
 namespace SoulTraders.Gear.Runes
 {
-    public abstract class Rune : MonoBehaviour, IInventoryItem
+
+    public interface IRuneEffect
+    {
+        string EffectName { get; }
+        string EffectDesc { get; }
+        void Effect();
+    }
+    public abstract class Rune : InventoryItem, IRuneEffect
     {
 
-        public ItemType type
+        public override abstract string ItemName { get; }
+        public override abstract string ItemDesc { get; }
+
+        public override ItemType ItemType
         {
             get
             {
                 return ItemType.RUNE;
             }
         }
-
-        public abstract string GetName();
-
-        public abstract string GetDesc();
 
         // Start is called before the first frame update
         void Start()
@@ -31,8 +37,9 @@ namespace SoulTraders.Gear.Runes
 
         }
 
-        public abstract string GetEffectName();
-        public abstract string GetEffectDesc();
+        public abstract string EffectName { get; }
+
+        public abstract string EffectDesc { get; }
         public abstract void Effect();
     }
 }

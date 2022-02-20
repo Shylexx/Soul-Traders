@@ -24,24 +24,36 @@ namespace SoulTraders.Gear.Runes
         private string _effectName = "Ignition";
         private string _effectDesc = "Sets Enemies Aflame";
 
-        public override string GetName()
+        public override string ItemName
         {
-            return _runeName;
+            get
+            {
+                return _runeName;
+            }
         }
 
-        public override string GetDesc()
+        public override string ItemDesc
         {
-            return _runeDesc;
+            get
+            {
+                return _runeDesc;
+            }
         }
 
-        public override string GetEffectName()
+        public override string EffectName
         {
-            return _effectName;
+            get
+            {
+                return _effectName;
+            }
         }
 
-        public override string GetEffectDesc()
+        public override string EffectDesc
         {
-            return _effectDesc;
+            get
+            {
+                return _effectDesc;
+            }
         }
 
 

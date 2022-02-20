@@ -5,11 +5,8 @@ using UnityEngine;
 namespace SoulTraders.Gameplay
 {
     ///<summary>Creates Logic for the player to interact with a gameobject.</summary>
-    public class Interactable : MonoBehaviour
+    public interface IInteractable
     {
-        public virtual void OnInteract()
-        {
-
-        }
+        void OnInteract();
     }
 }
