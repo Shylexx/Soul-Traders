@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SoulTraders.Gameplay.Enemy
 {
-    public class AIWander : KinematicObject
+    public class AIWander : EnemyController
     {
 
         [SerializeField] private float maxWanderDist;
@@ -19,8 +19,8 @@ namespace SoulTraders.Gameplay.Enemy
 
         Vector2 wayPoint;
         Vector2 direction;
+
         float distance;
-       
 
 
 
@@ -41,12 +41,18 @@ namespace SoulTraders.Gameplay.Enemy
             rigidBody = GetComponent<Rigidbody2D>();
         }
 
-         protected override void Update()
+          void Update()
          {
             distance = Vector2.Distance(transform.position, wayPoint);
             //Debug.Log(distance);
             
-            if (distance > maxWanderDist)
+            if (isWalking && !isBusy)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, wayPoint, wanderSpeed *Time.deltaTime);
+            }
+
+            //make sure waypoint is not too far
+            if (distance > maxWanderDist && !isBusy)
             {
                 NewWanderPoint();
             }
@@ -60,12 +66,12 @@ namespace SoulTraders.Gameplay.Enemy
             }
 
             //stop and wait
-            if (!isWandering && distance <= 0.5)
+            if (!isWalking && distance <= 0.5 && !isBusy)
             {
                 NewWanderPoint();
                 direction = Vector2.zero;
             }
-            base.Update();
+            
           
 
          }
@@ -85,16 +91,13 @@ namespace SoulTraders.Gameplay.Enemy
             yield return new WaitForSeconds(Random.Range(1, 6));
 
             NewWanderPoint();
-            direction = (wayPoint - (Vector2)transform.position).normalized;
+            
 
             isWalking = true;
             isWandering = false;
         }
 
-        protected override void CalcVelocity()
-        {
-            targetVelocity = direction * wanderSpeed;
-        }
+        
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
