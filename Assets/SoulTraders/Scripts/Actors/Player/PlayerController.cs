@@ -12,18 +12,27 @@ namespace SoulTraders.Gameplay.Player
     {
 
         // Component References
+        [HideInInspector]
         public SpriteRenderer spriteRenderer;
+        [HideInInspector]
         public AudioSource audioSource;
+        [HideInInspector]
         public Collider2D playerCollider;
+        [HideInInspector]
         public Animator animator;
-
+        [HideInInspector]
         public Rigidbody2D playerBody;
 
+        [SerializeReference]
         public PlayerInventory inventory;
+
+        public GameObject weapon1;
+
+        public GameObject weapon2;
 
         // Model Reference
         readonly STControl model = STEvents.GetModel<STControl>();
-
+        [HideInInspector]
         public bool controlEnabled = true;
 
         //Movement
@@ -70,6 +79,10 @@ namespace SoulTraders.Gameplay.Player
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Interact();
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+
             }
             base.Update();
         }
@@ -145,5 +158,8 @@ namespace SoulTraders.Gameplay.Player
         }
 
     }
+
+
+    // Combat
 
 }

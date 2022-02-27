@@ -40,7 +40,7 @@ namespace SoulTraders.Gear.GearItems
         {
             get
             {
-                return ItemType.MISC;
+                return ItemType.GEAR;
             }
         }
 
@@ -75,5 +75,7 @@ namespace SoulTraders.Gear.GearItems
                 return _quality;
             }
         }
+
+
     }
 }

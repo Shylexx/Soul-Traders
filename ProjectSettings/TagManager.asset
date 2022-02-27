@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Map
+    uniqueID: 300141801
+    locked: 0
+  - name: Player
+    uniqueID: 2349459281
+    locked: 0
+  - name: Gear
+    uniqueID: 3323805133
+    locked: 0
+  - name: Enemy
+    uniqueID: 3588758453
+    locked: 0
+  - name: Crosshair
+    uniqueID: 249429427
+    locked: 0

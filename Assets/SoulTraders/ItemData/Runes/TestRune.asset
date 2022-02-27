@@ -15,9 +15,12 @@ MonoBehaviour:
   _itemName: Test Rune
   _itemDesc: Test Rune Desc
   _itemType: 2
+  _weight: 0
+  _quality: 0
   effects:
   - id: 0
   - id: 1
+  - id: 2
   references:
     version: 1
     00000000:
@@ -36,3 +39,5 @@ MonoBehaviour:
           position: {x: 0, y: 0}
           size: 0
           message: 
+    00000002:
+      type: {class: , ns: , asm: }

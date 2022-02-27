@@ -17,22 +17,7 @@ namespace SoulTraders.Gear.GearItems
             get;
         }
 
-        int ID
-        {
-            get;
-        }
-
     }
-
-    public class GearItem : MonoBehaviour
-    {
-        public GearItemData gearItem;
-
-
-
-    }
-
-
 
 
 }
