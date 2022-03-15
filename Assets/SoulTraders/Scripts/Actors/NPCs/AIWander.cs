@@ -10,25 +10,17 @@ namespace SoulTraders.Gameplay.Enemy
     public class AIWander : EnemyController
     {
 
-        [SerializeField] private float maxWanderDist;
-        [SerializeField] private float wanderSpeed;
+        [HideInInspector] public float maxWanderDist;
+        [HideInInspector] public float wanderSpeed;
 
-        BoxCollider2D boxCollider;
-        Rigidbody2D rigidBody;
+        [HideInInspector] public Vector2 wayPoint;
+       
+        [HideInInspector] public float distance;
+        
 
-
-        Vector2 wayPoint;
-        Vector2 direction;
-
-        float distance;
-
-
-
-
-        private bool isWalking = true;
-        private bool isWandering = false;
-        public bool isBusy = false;
-
+        [HideInInspector] public bool isWalking = true;
+        [HideInInspector] public bool isWandering = false;
+        
 
 
 
@@ -37,11 +29,11 @@ namespace SoulTraders.Gameplay.Enemy
         // Start is called before the first frame update
         void Start()
         {
-            boxCollider = GetComponent<BoxCollider2D>();
-            rigidBody = GetComponent<Rigidbody2D>();
+            
+            
         }
 
-          void Update()
+         new void Update()
          {
             distance = Vector2.Distance(transform.position, wayPoint);
             //Debug.Log(distance);
@@ -69,7 +61,7 @@ namespace SoulTraders.Gameplay.Enemy
             if (!isWalking && distance <= 0.5 && !isBusy)
             {
                 NewWanderPoint();
-                direction = Vector2.zero;
+                
             }
             
           
@@ -113,6 +105,14 @@ namespace SoulTraders.Gameplay.Enemy
         }
     }
 }
+
+
+
+
+
+        
+
+
 
 
 
