@@ -11,22 +11,21 @@ namespace SoulTraders.Gameplay.Enemy
     {
 
         //Checks for later use
-         [HideInInspector] public bool isChasing = false;
+        [HideInInspector] public bool isChasing = false;
         //private bool isAttacking = false;
 
         public float chaseSpeed;
         public float chaseDist = 60;
-        
+
 
         // Start is called before the first frame update
-        void Awake()
+        protected override void Awake()
         {
-            
-            
+            base.Awake();
         }
 
         // Update is called once per frame
-        new void FixedUpdate()
+        protected override void FixedUpdate()
         {
             //checking the distance between the player and itself
 
@@ -34,23 +33,22 @@ namespace SoulTraders.Gameplay.Enemy
             {
                 Chase();
             }
-            else if (playerDist > chaseDist) 
+            else if (playerDist > chaseDist)
             {
                 EndChase();
-            } 
+            }
             else if (isChasing && playerDist > 10)
             {
                 Chase();
             }
-            
-           
+
+
 
         }
 
-       new private void Update()
+        protected override void Update()
         {
-            
-
+            base.Update();
         }
 
 
@@ -60,32 +58,25 @@ namespace SoulTraders.Gameplay.Enemy
 
             FindNearestEnemy();
 
-
             isBusy = true;
             isChasing = true;
 
-            
             if (playerDist > 3)
             {
-                
                 rb2d.AddForce((playerTransform.position - transform.position) * chaseSpeed * Time.deltaTime, ForceMode2D.Force);
 
-            } 
+            }
             else if (playerDist <= 3 && playerDist > 2)
             {
                 rb2d.AddForce(-(playerTransform.position - transform.position) * 200f * Time.deltaTime, ForceMode2D.Force);
-            } 
-           
-           if (playerDist <= 2)
+            }
+
+            if (playerDist <= 2)
             {
+                Debug.Log("Moving away from other enemy");
                 rb2d.AddForce(-(FindNearestEnemy().transform.position - transform.position) * 200f * Time.deltaTime, ForceMode2D.Force);
             }
 
-           
-
-            
-            
-            
         }
 
         public void EndChase()
@@ -100,10 +91,10 @@ namespace SoulTraders.Gameplay.Enemy
             if (collision.gameObject.tag == ("Enemy"))
             {
                 //Not working vv
-                
+
                 //Debug.Log("Collision !");
-            } 
-            
+            }
+
         }
 
         public GameObject FindNearestEnemy()
@@ -119,7 +110,7 @@ namespace SoulTraders.Gameplay.Enemy
                 Debug.Log("No Enemies in array");
             }
 
-            foreach(GameObject enemy in enemies)
+            foreach (GameObject enemy in enemies)
             {
                 Vector2 diff = (Vector2)enemy.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
@@ -130,19 +121,19 @@ namespace SoulTraders.Gameplay.Enemy
                     //Debug.Log(enemyDist);
                 }
 
-                
+
             }
             return closest;
         }
     }
 }
 
-                
-                    
-            
-            
-        
-        
+
+
+
+
+
+
 
 
 

@@ -103,8 +103,14 @@ MonoBehaviour:
   aiWander: {fileID: 0}
   rb2d: {fileID: 0}
   isBusy: 0
+  isAlert: 0
+  playerDist: 0
   maxWanderDist: 3
   wanderSpeed: 0.6
+  wayPoint: {x: 0, y: 0}
+  distance: 0
+  isWalking: 1
+  isWandering: 0
 --- !u!114 &8050205559103627016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +127,9 @@ MonoBehaviour:
   aiWander: {fileID: 0}
   rb2d: {fileID: 0}
   isBusy: 0
+  isAlert: 0
+  playerDist: 0
+  isChasing: 0
   chaseSpeed: 200
   chaseDist: 60
 --- !u!50 &703915589467694885
@@ -168,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &-5335346421568886065
 MonoBehaviour:
@@ -186,3 +195,5 @@ MonoBehaviour:
   aiWander: {fileID: 0}
   rb2d: {fileID: 0}
   isBusy: 0
+  isAlert: 0
+  playerDist: 0

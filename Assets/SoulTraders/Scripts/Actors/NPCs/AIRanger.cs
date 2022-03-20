@@ -5,15 +5,16 @@ using UnityEngine;
 
 
 
-namespace SoulTraders.Gameplay.Enemy {
+namespace SoulTraders.Gameplay.Enemy
+{
     public class AIRanger : EnemyController
     {
         // !! Issue where the ranger enemy will wander when not chasing or running from the enemy
 
         AIChase aiChase;
-        
 
-        
+
+
 
         // Start is called before the first frame update
         void Start()
@@ -23,7 +24,7 @@ namespace SoulTraders.Gameplay.Enemy {
         }
 
         // Update is called once per frame
-        new void FixedUpdate()
+        protected override void FixedUpdate()
         {
             playerDist = Vector2.Distance(playerTransform.position, transform.position);
 
@@ -35,25 +36,26 @@ namespace SoulTraders.Gameplay.Enemy {
             }
 
 
-            
-            if (playerDist < 5){
+
+            if (playerDist < 5)
+            {
                 // Flee from player  
 
                 Flee();
-                
+
             }
             else if (playerDist > 5 && playerDist < 10 && isAlert)
             {
                 // Shoot the player
 
                 ShootAtPlayer();
-                
+
             }
             else if (playerDist > 15 && playerDist < 60 && isAlert)
             {
                 // Chase the player
-
-                rb2d.AddForce((playerTransform.position - transform.position) * 200f * Time.deltaTime, ForceMode2D.Force);
+                //aiChase.Chase();
+                //rb2d.AddForce((playerTransform.position - transform.position) * 200f * Time.deltaTime, ForceMode2D.Force);
             }
             else if (playerDist > 60)
             {
@@ -63,7 +65,8 @@ namespace SoulTraders.Gameplay.Enemy {
                 isAlert = false;
             }
 
-            
+            base.FixedUpdate();
+
         }
 
         private void Flee()
@@ -80,7 +83,7 @@ namespace SoulTraders.Gameplay.Enemy {
         {
             // Stop at a certain distance from the player and shoot
 
-            
+
         }
     }
 

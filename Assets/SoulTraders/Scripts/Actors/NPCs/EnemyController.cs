@@ -17,21 +17,21 @@ namespace SoulTraders.Gameplay.Enemy
         [HideInInspector] public float playerDist;
 
         // Start is called before the first frame update
-        void Awake()
+        protected virtual void Awake()
         {
             playerTransform = GameObject.Find("PlayerCharacter").GetComponent<Transform>();
             aiWander = GetComponent<AIWander>();
             rb2d = GetComponent<Rigidbody2D>();
-            
+            Debug.Log("Got Components");
         }
 
         // Update is called once per frame
-        new void FixedUpdate()
+        protected override void FixedUpdate()
         {
-            
+            base.FixedUpdate();
         }
 
-        new void Update()
+        protected override void Update()
         {
             playerDist = Vector2.Distance(playerTransform.position, transform.position);
         }
